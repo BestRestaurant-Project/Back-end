@@ -48,6 +48,17 @@ dependencies {
 
 def generated = 'src/main/generated'
 
+bootJar{
+	archivesBaseName = 'bestrestaurant'
+	archiveFileName = 'bestrestaurant.jar'
+	archiveVersion = "0.0.0"
+}
+
+tasks.named("jar") {
+	enabled = false
+}
+
+
 sourceSets{
 	main{
 		java{
