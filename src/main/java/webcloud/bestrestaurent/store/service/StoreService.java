@@ -44,7 +44,7 @@ public class StoreService {
 
     }
 
-    public ResponseDto getStore(ServletRequest request, Long storeId){
+    public ResponseDto getStore(Long storeId){
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(()-> new IllegalArgumentException("가게를 찾을 수 없습니다."));
 
@@ -60,7 +60,8 @@ public class StoreService {
     }
 
 
-    public ResponseDto getStores(ServletRequest request, String type, Pageable pageable) {
+    public ResponseDto getStores(String type, Pageable pageable) {
+
         List<GetStoreResponseDto> pages = storeRepository.findByType(type, pageable)
                 .stream()
                 .map(post -> new GetStoreResponseDto(post))

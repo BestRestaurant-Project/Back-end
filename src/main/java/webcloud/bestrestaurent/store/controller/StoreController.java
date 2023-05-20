@@ -27,16 +27,16 @@ public class StoreController {
     }
 
     @GetMapping("/stores/{type}/get")
-    public ResponseDto getStores(ServletRequest request, @PathVariable String type,
+    public ResponseDto getStores(@PathVariable String type,
                                  @PageableDefault(size=50, sort="ratingAverage", direction= Sort.Direction.DESC)
                                          Pageable pageable) {
-        return storeService.getStores(request, type, pageable);
+        return storeService.getStores(type, pageable);
     }
 
 
     @GetMapping("/store/{storeId}/get")
-    public ResponseDto getStore(ServletRequest request, @PathVariable Long storeId){
-        return storeService.getStore(request, storeId);
+    public ResponseDto getStore(@PathVariable Long storeId){
+        return storeService.getStore(storeId);
     }
 
 }
