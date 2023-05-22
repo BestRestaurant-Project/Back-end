@@ -1,5 +1,6 @@
 package webcloud.bestrestaurent.rating.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import webcloud.bestrestaurent.store.domain.Store;
@@ -21,18 +22,19 @@ public class Rating {
     @JoinColumn(name = "id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id")
-    private Store store;
+    @Column(name = "store_id")
+    private Long storeId;
 
-    @Column(name = "rating")
-    private Double rating;
+    @Column(name = "rating_value")
+    private Double ratingValue;
+
+    @Builder
+    public Rating(Long storeId, Double ratingValue){
+        this.storeId = storeId;
+        this.ratingValue = ratingValue;
+    }
 
     public void insertUser(User user) {
         this.user = user;
-    }
-
-    public void insertStore(Store store) {
-        this.store = store;
     }
 }

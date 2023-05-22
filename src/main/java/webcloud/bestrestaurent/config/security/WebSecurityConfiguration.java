@@ -20,10 +20,6 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class WebSecurityConfiguration{
 
-    @Bean(name = "mvcHandlerMappingIntrospector")
-    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
-        return new HandlerMappingIntrospector();
-    }
     @Bean
     @Order(SecurityProperties.BASIC_AUTH_ORDER)
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {

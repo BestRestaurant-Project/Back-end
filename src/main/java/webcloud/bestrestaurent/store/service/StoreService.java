@@ -34,9 +34,12 @@ public class StoreService {
                 .name(createStoreRequestDto.getName())
                 .type(createStoreRequestDto.getType())
                 .foodType(createStoreRequestDto.getFoodType())
+                .ratingTotal(0D)
+                .ratingAverage(0D)
+                .ratingNumber(0)
                 .build();
 
-        store.setRatingAverage(0D); // 처음 가게 생성 시 별점은 0
+        // store.setRatingAverage(0D); // 처음 가게 생성 시 별점은 0
 
         storeRepository.save(store);
 

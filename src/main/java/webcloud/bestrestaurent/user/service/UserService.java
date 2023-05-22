@@ -46,6 +46,7 @@ public class UserService {
         return new ResponseDto("SUCCESS", "사용가능한 유저네임입니다.");
     }
 
+    private final UserDetailsService userDetailsService;
     public ResponseDto userSignIn(SignInRequestDto signInRequestDto) {
         if (!userRepository.existsByUserName(signInRequestDto.getUserName())) {
             return new ResponseDto("FAIL", "존재하지 않는 유저네임입니다.");}
@@ -65,6 +66,9 @@ public class UserService {
         LoginDto loginDto = new LoginDto();
         loginDto.setUserId(user.getUserId());
         loginDto.setTokenDto(tokenDto);
+
+        User test = (User)userDetailsService.loadUserByUsername(jwtAuthenticationProvider.getUserPk(tokenDto.getAccessToken()));
+
         // login시 userid 넘겨주기 위함
         return new ResponseDto("SUCCESS",loginDto);
 
