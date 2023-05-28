@@ -40,7 +40,7 @@ public class RatingService {
 
         Rating rating;
 
-        if(ratingRepository.existsByUserAndStoreId(user,store.getStoreId()) ){ // 이미 해당 가게에 별점을 매긴 유저라면
+        if(ratingRepository.existsByUserAndStoreId(user,store.getStoreId())){ // 이미 해당 가게에 별점을 매긴 유저라면
             //System.out.println(user.getUserId());
             //System.out.println(store.getStoreId());
             rating = ratingRepository.findByUserAndStoreId(user,store.getStoreId());

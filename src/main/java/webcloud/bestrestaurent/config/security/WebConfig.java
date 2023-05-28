@@ -11,7 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .exposedHeaders("Access_Token")
                 .allowCredentials(true)
-                .allowedOrigins("*")
+                //.allowCredentials(true)과 .allowedOrigin("*") 같이 못쓰게 업데이트됨
+                // .allowedOrigin("*") => .allowedOriginPatterns("*")
+                .allowedOriginPatterns("*")
                 .allowedHeaders("*")
                 .allowedMethods("*");
     }
